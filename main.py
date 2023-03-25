@@ -33,7 +33,7 @@ def first_page():
 
     div2 = jp.Div(a=div, classes='grid grid-cols-2 gap-4 p-4 border border-black')
 
-   jp.Button(a=div2,text = 'Calculate',click = sum_up,
+    jp.Button(a=div2,text = 'Calculate',click = sum_up,
              in1 = in_1, in2 = in_2, d = d_output,
              # now we will make a border around our button
              classes = 'border border-blue-500 m-2 py-1 px-4 rounded text-blue-600 '
@@ -50,6 +50,7 @@ def sum_up(widget,msg):
     input2 = widget.in2.value
     result = float(input1) + float(input2)
     widget.d.text = result
+
 
 # we will make a mouse event handler that changes the text of the cool and interactive div on hover
 def mouse_enter(widget,msg):
