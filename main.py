@@ -5,9 +5,12 @@ def first_page():
     """
     This function creates the webpage, for more information on styles and components
     go to tailwindcss.com
+    We also integrate the quasar interface into these webpages to more easily style our page and components
+    Tailwind code will still evaluate since we set the tailwind parameter of the QuasarPage to True
+    for more information on quasar components and styling go to quasar.dev
     """
     # we create an empty webpage
-    wp = jp.WebPage()
+    wp = jp.QuasarPage(tailwind=True)
     # to style our webpage we first make a main div and use the classes parameter and more information can be found on tailwindcss
     div = jp.Div(a=wp,classes = 'bg-blue-100 h-screen')
 
@@ -30,7 +33,15 @@ def first_page():
 
     div2 = jp.Div(a=div, classes='grid grid-cols-2 gap-4 p-4 border border-black')
 
-    jp.Button(a=div2,text = 'Calculate',click = sum_up,
+#   jp.Button(a=div2,text = 'Calculate',click = sum_up,
+#             in1 = in_1, in2 = in_2, d = d_output,
+#             # now we will make a border around our button
+#             classes = 'border border-blue-500 m-2 py-1 px-4 rounded text-blue-600 '
+#                       'hover:bg-red-500 hover:text-white')
+# To transform the button to a quasar button we need to change from the Button argument to the QBtn argument in the justpy class
+# this will work with any component, we just need to add a Q in front of the component to make it a quasar component
+# the styling of the component will remain the same due to the tailwind styling
+    jp.QButton(a=div2,text = 'Calculate',click = sum_up,
               in1 = in_1, in2 = in_2, d = d_output,
               # now we will make a border around our button
               classes = 'border border-blue-500 m-2 py-1 px-4 rounded text-blue-600 '
