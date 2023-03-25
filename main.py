@@ -7,10 +7,12 @@ import justpy as jp
 
 from about import About
 from home import HomePage
+from dictionary import DictionaryPage
 
 # this will run the different pages
 jp.Route(About.path,About.serve)
 jp.Route(HomePage.path,HomePage.serve)
+jp.Route(DictionaryPage.path,DictionaryPage.serve)
 
 # this will run the web app on the port
 if __name__ == '__main__':
