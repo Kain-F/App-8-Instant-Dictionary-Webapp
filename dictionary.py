@@ -46,5 +46,8 @@ class DictionaryPage():
     @staticmethod
     # this is the on click event handler that gets the definition
     def get_definition(widget,msg):
-        widget.outputdiv.text = widget.in1.value
+        input = widget.in1.value
+        definition = util.Definition(term=input).get()
+        # with the join method we transform our tuple into defintions underneath eachother
+        widget.outputdiv.text = " ".join(definition)
 
