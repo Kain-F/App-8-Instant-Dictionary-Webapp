@@ -35,7 +35,8 @@ def first_page():
               # now we will make a border around our button
               classes = 'border border-blue-500 m-2 py-1 px-4 rounded text-blue-600 '
                         'hover:bg-red-500 hover:text-white')
-    jp.Div(a=div2, text = 'I am div')
+    jp.Div(a=div2, text = 'I am cool and interactive',classes = 'hover:bg-red-500 hover:text-white'
+           ,mouseenter = mouse_enter,mouseleave = mouse_leave)
 
     return wp
 
@@ -45,6 +46,14 @@ def sum_up(widget,msg):
     input2 = widget.in2.value
     result = float(input1) + float(input2)
     widget.d.text = result
+
+# we will make a mouse event handler that changes the text of the cool and interactive div on hover
+def mouse_enter(widget,msg):
+    widget.text = 'A mouse entered the house!!'
+
+# we now make an event handler that changes the text back once the mouse has stopped hovering over the div
+def mouse_leave(widget,msg):
+    widget.text = 'The mouse has left the house'
 
 
 
