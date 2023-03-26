@@ -5,9 +5,23 @@ import justpy as jp
 class About():
     path = '/about'
 
-    def serve(self):
+
+    @classmethod
+    def serve(cls,req):
         wp = jp.QuasarPage(tailwind=True)
-        div = jp.Div(a=wp, classes='bg-blue-100 h-screen')
+
+        layout = jp.QLayout(a=wp, view="hHh lpR fFf")
+        header = jp.QHeader(a=layout)
+        toolbar = jp.QToolbar(a=header,title='Instant dictionary')
+        drawer = jp.QDrawer(a = layout,show_if_above = True, dense='True',v_model = 'leftDrawerOpen',
+                            side = 'left', border = True)
+        jp.QBtn(a = toolbar,dense=True,flat=True,round=True,icon='menu',bordered=True,
+                 drawer=drawer,click = cls.move_drawer)
+        jp.QToolbar(a=toolbar,text='Instant dictionary')
+
+        container = jp.QPageContainer(a=layout)
+
+        div = jp.Div(a=container, classes='bg-blue-100 h-screen')
         jp.Div(a=div,text= 'This is the about page', classes = 'text-4xl m-2')
         jp.Div(a=div,text= """        
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at lobortis dui, quis tempus dui. Suspendisse lobortis lacus porta turpis semper, sit amet varius enim blandit. Nam rhoncus malesuada maximus. Vivamus non sapien ultricies, tempor elit nec, finibus metus. Duis dignissim libero justo, in suscipit neque placerat at. Curabitur convallis scelerisque turpis, eget convallis metus tincidunt vitae. Pellentesque porta tellus id nunc lacinia, nec pulvinar risus dictum. Integer vehicula elit sit amet lectus hendrerit, vitae rutrum nunc ullamcorper. Sed quis commodo quam, sed consectetur ante. Quisque tempus ipsum a ex rhoncus laoreet. Suspendisse finibus cursus condimentum. Suspendisse potenti. Duis non pulvinar mi. Quisque eget diam tristique, porttitor odio nec, pharetra augue.
@@ -16,6 +30,17 @@ class About():
         Donec vitae neque vitae ligula egestas tempor. Aliquam suscipit eu lorem ut placerat. Quisque elementum fringilla mauris, sit amet porta ligula lacinia vel. Donec varius, leo in tincidunt egestas, lectus neque rutrum nibh, sed dictum metus nulla a ipsum. Praesent lacinia lectus molestie nisi fermentum, vitae suscipit augue faucibus. Duis id eros lectus. Suspendisse in ultrices urna. Vestibulum placerat dui a lectus maximus ultrices. Duis sagittis nibh et ligula ultricies ornare. Aliquam erat volutpat. Etiam auctor nisl dui, id cursus ex tristique id.
         Praesent lobortis in nisi nec pretium. Aenean et leo ac ex accumsan tempus at in tellus. Donec nec facilisis ante. Nam vel fermentum ex, eget dapibus ipsum. Vivamus efficitur odio magna, ut sodales elit interdum sed. Mauris a ipsum non sem tincidunt tristique. Nunc vel purus suscipit, congue est id, finibus tellus. Cras at fermentum lorem.
         """, classes = 'text-lg ')
+        print(cls,req)
         return wp
+
+    @staticmethod
+    def move_drawer(widget,msg):
+        print(widget.drawer.value)
+        if widget.drawer.value:
+            widget.drawer.value = False
+        else:
+            widget.drawer.value = True
+
+
 
 
