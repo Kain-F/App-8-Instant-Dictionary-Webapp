@@ -1,5 +1,6 @@
 import justpy as jp
 import util
+import navbar
 
 class DictionaryPage():
     path = '/dictionary'
@@ -9,8 +10,12 @@ class DictionaryPage():
     @classmethod
     def serve(cls,req):
         wp = jp.QuasarPage(tailwind=True)
+
+        layout = navbar.DefaultLayout(a=wp)
+        container = jp.QPageContainer(a=layout)
+
         # this is the general lay-out of the page we have 3 sections stuck in one big div
-        div = jp.Div(a=wp, classes='bg-blue-100 h-screen')
+        div = jp.Div(a=container, classes='bg-blue-100 h-screen')
         div1 = jp.Div(a=div,classes = 'gap-2 p-4 border border-black')
         div2 = jp.Div(a=div,classes = 'grid grid-cols-2 gap-2 p-4 border border-black')
         div3 = jp.Div(a=div,classes = 'gap-2 p-4 border border-black')

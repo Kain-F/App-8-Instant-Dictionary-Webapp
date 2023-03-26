@@ -5,13 +5,13 @@
 
 import justpy as jp
 
-from about import About
+from about import AboutPage
 from home import HomePage
 from dictionary import DictionaryPage
 
 # this will run the different pages
 if __name__ == '__main__':
-    jp.Route(About.path,About.serve)
+    jp.Route(AboutPage.path,AboutPage.serve)
     jp.Route(HomePage.path,HomePage.serve)
     jp.Route(DictionaryPage.path,DictionaryPage.serve)
 
