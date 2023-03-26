@@ -1,8 +1,11 @@
 import justpy as jp
+
+import page
 import util
 import navbar
+from page import Page
 
-class DictionaryPage():
+class DictionaryPage(page.Page):
     path = '/dictionary'
 
     # by making serve a class method we will be able to get self as a dictionary instance

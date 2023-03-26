@@ -1,7 +1,9 @@
 import justpy as jp
 import navbar
+import page
+from page import Page
 
-class HomePage():
+class HomePage(page.Page):
     path= '/home'
 
     @classmethod

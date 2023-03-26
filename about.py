@@ -1,9 +1,11 @@
 import justpy as jp
 import navbar
+import page
+from page import Page
 
 # every page will get its own class in their own file
 
-class AboutPage():
+class AboutPage(page.Page):
     path = '/about'
 
     @classmethod
